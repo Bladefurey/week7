@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Student</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h2>Student Registration</h2>
+        <input type="radio" name="location" id="downtown">Downtown 
+        <input type="radio" name="location" id="countrysides">CountrySites
+        <br><br>
+        <div>
+            <div id="address">
+                <label>Adderess : </label><input type="text" id="addresses">
+                <p style="color:red;" id="warning1"></p>
+            </div>
+            <div id="hostel">
+                <label>Hostel : </label><input type="text" id="host">
+                <p style="color:red;" id="warning2"></p>
+            </div>
+            <button type="sumbit" id="btn">register</button><br><br><br><br>
+            <h1 style="color:green;" id="success"></h1>
+
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded",function(){
+                document.getElementById("btn").disabled=true;
+                document.getElementById("addresses").disabled=true;
+                document.getElementById("host").disabled=true;
+                document.getElementById("downtown").onclick=()=>{
+                    document.getElementById("addresses").disabled=false;
+                    document.getElementById("btn").disabled=false;
+                    document.getElementById("host").disabled=true;
+                        document.getElementById("btn").onclick=()=>{
+                        if(document.getElementById("addresses").value==""){
+                            document.getElementById("warning1").innerHTML="Please Enter Your Address";
+                            document.getElementById("success").innerHTML=""
+                        }
+                        else{
+                            document.getElementById("warning1").innerHTML="";
+                            document.getElementById("success").innerHTML="Register Successful!"
+                        }
+                    }
+                } 
+                document.getElementById("countrysides").onclick=()=>{
+                    document.getElementById("btn").disabled=false;
+                    document.getElementById("host").disabled=false;
+                    document.getElementById("addresses").disabled=false;
+                        document.getElementById("btn").onclick=()=>{
+                        if(document.getElementById("addresses").value=="" && document.getElementById("host").value==""){
+                            document.getElementById("warning1").innerHTML="Please Enter Your Address";
+                            document.getElementById("warning2").innerHTML="Please Enter Your Hostel Address";
+                            document.getElementById("success").innerHTML=""
+                        }
+                        else if(document.getElementById("addresses").value!="" && document.getElementById("host").value==""){
+                            document.getElementById("warning2").innerHTML="Please Enter Your Hostel Address";
+                            document.getElementById("warning1").innerHTML="";
+                            document.getElementById("success").innerHTML=""
+                        }
+                        else if(document.getElementById("addresses").value=="" && document.getElementById("host").value!=""){
+                            document.getElementById("warning1").innerHTML="Please Enter Your Address";
+                            document.getElementById("warning2").innerHTML="";
+                            document.getElementById("success").innerHTML=""
+                        }
+                        else if(document.getElementById("addresses").value!="" && document.getElementById("host").value!=""){
+                            document.getElementById("warning1").innerHTML="";
+                            document.getElementById("warning2").innerHTML="";
+                            document.getElementById("success").innerHTML="Register Successful!"
+                        }
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
