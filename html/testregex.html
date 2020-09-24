@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Test Regex</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h3>Test Regex</h3>
+        <script>
+            //first test
+            var pattern=/hello/i;
+            console.log(pattern.test("hello World"));
+            console.log(pattern.test("I am a student"));
+            //first test
+            
+            //second test character set
+            var pattern2=/[bt]ear/;
+            console.log(pattern2.test("bear"));
+            console.log(pattern2.test("tear"));
+            console.log(pattern2.test("ear"));
+            console.log(pattern2.test("fear"));
+            console.log(pattern2.test("bla"));
+            //second end
+
+            //third character set test
+            var pattern3=/[^bt]ear/;
+            console.log(pattern3.test("fear"));
+            console.log(pattern3.test("mear"));
+            console.log(pattern3.test("bear"));
+            console.log(pattern3.test("blabla"));
+            //third end
+
+            //forth test
+            var pattern4=/[0-9][a-z]/;
+            console.log(pattern4.test("2h"));
+            console.log(pattern4.test("999"));
+            console.log(pattern4.test("adf"));
+            console.log(pattern4.test("88sdfa"));
+            //forth end
+
+            //fifth test(IF you use +, you need to put at least one )
+            var pattern5=/[0-9]+[a-z]+/;
+            console.log(pattern5.test("229"));
+            console.log(pattern5.test("6666ss"));//right format
+            console.log(pattern5.test("aad555"));
+            console.log(pattern5.test("aaa"));
+            //fifth end
+
+            //sixth test(if you use *, you it's mean 0 or more)
+            var pattern6=/[0-9]+[a-z]*/;
+            console.log(pattern6.test("2222"));
+            console.log(pattern6.test("999aaa"));
+            console.log(pattern6.test("fff"));
+            //sixth end
+
+            //test check date
+            var date=/^[0-9]{1,2}[\.\-\/][0-9]{1,2}[\.\-\/][0-9]{2}$/;
+            console.log("date "+ date.test("1.2.22"));
+            console.log("date "+ date.test("12-5-20"));
+            console.log("date "+ date.test("111/5/6"));
+            //end
+
+            //check phone num
+            var ph=/^[(]095[)][\s\-]?09[\.\-\s]?[0-9]{6,9}$/;
+            console.log("phone num is "+ ph.test("(095)09-899884588"));
+            console.log("phone num is "+ ph.test("(095)00-899884588"));
+            console.log("phone num is "+ ph.test("(095)-09-899884588"));
+        </script>
+    </body>
+</html>
